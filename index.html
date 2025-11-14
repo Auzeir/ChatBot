@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Assistente Auzeir</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <h1>🤖 Assistente Auzeir</h1>
+  <p>Bem-vindo à nossa corretora de seguros! Fale com o Auzeir pelo WhatsApp ou aqui mesmo.</p>
+
+  <form action="/chat" method="post">
+    <label for="mensagem">Digite sua mensagem:</label><br>
+    <input type="text" id="mensagem" name="mensagem" required>
+    <button type="submit">Enviar</button>
+  </form>
+
+  {% if resposta %}
+    <div class="resposta">
+      <h3>Resposta do Auzeir:</h3>
+      <p>{{ resposta }}</p>
+    </div>
+  {% endif %}
+</body>
+</html>
