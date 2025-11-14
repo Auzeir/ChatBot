@@ -235,11 +235,9 @@ def whatsapp_webhook():
 
     cursor.execute("SELECT nome FROM clientes_seg WHERE telefone=%s LIMIT 1", (phone,))
     r = cursor.fetchone()
-    nome = r[0] if r else None
+    nome = r[0] if r else "Cliente"
 
-    if not nome:
-        resposta = f"Olá! 👋 Sou o {ASSISTENTE_NAME}, seu consultor virtual 🧢💼.\nQual é seu nome completo?"
-    elif any(p in texto_normalizado for p in ["plano", "seguro", "cobertura", "proteção", "serviço"]):
+    if any(p in texto_normalizado for p in ["plano", "seguro", "cobertura", "proteção", "serviço"]):
         servicos = consultar_servicos()
         if servicos:
             resposta = "💼 Aqui estão nossos seguros disponíveis:\n\n"
